@@ -5,13 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>安全验证中...</title>
     <style>
-        body { margin:0; font-family:Arial,sans-serif; background:#f8f9fa; text-align:center; padding:50px 20px; }
-        .container { max-width:500px; margin:0 auto; background:white; padding:30px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.1); }
-        .green-bar { background:#28a745; color:white; padding:20px; border-radius:8px; margin-bottom:20px; }
-        .check { font-size:80px; margin:0; }
-        h2 { margin:10px 0; }
-        p { font-size:18px; }
-        #sec { font-weight:bold; font-size:24px; }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .green-bar {
+            background: #28a745;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .check {
+            font-size: 80px;
+            margin: 0;
+        }
+        h2 {
+            margin: 10px 0;
+        }
+        p {
+            font-size: 18px;
+        }
+        #sec {
+            font-weight: bold;
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
@@ -29,7 +58,7 @@
         const target = params.get('url');
         
         if (!target) {
-            document.body.innerHTML = '<h1 style="color:red;">缺少 ?url= 参数</h1><p>正确格式：?url=https://your-link.com</p >';
+            document.body.innerHTML = '<h1 style="color:red;">缺少 ?url= 参数</h1><p>正确格式示例：?url=https://www.taobao.com</p >';
         } else {
             let seconds = 3;
             const countdown = setInterval(() => {
