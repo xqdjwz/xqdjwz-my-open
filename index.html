@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>直链打开中...</title>
+</head>
+<body>
+    <p>正在安全打开链接...</p >
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const target = params.get('url');
+        
+        if (target) {
+            window.location.href = target;
+        } else {
+            document.body.innerHTML = '<h1 style="color:red;">缺少 ?url= 参数</h1><p>正确格式示例：?url=https://www.taobao.com</p >';
+        }
+    </script>
+</body>
+</html>
