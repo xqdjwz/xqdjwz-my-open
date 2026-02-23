@@ -3,19 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>直链打开中...</title>
+    <title>安全验证中...</title>
+    <style>
+        body { margin:0; font-family:Arial,sans-serif; background:#f8f9fa; text-align:center; padding:50px 20px; }
+        .container { max-width:500px; margin:0 auto; background:white; padding:30px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.1); }
+        .green-bar { background:#28a745; color:white; padding:20px; border-radius:8px; margin-bottom:20px; }
+        .check { font-size:80px; margin:0; }
+        h2 { margin:10px 0; }
+        p { font-size:18px; }
+        #sec { font-weight:bold; font-size:24px; }
+    </style>
 </head>
 <body>
-    <p>正在安全打开链接...</p >
+    <div class="container">
+        <div class="green-bar">
+            <div class="check">✔</div>
+            <h2>二维码已通过安全验证</h2>
+            <p>即将跳转... <span id="sec">3</span> 秒</p >
+        </div>
+        <p>系统检测通过，请勿关闭页面</p >
+    </div>
 
     <script>
         const params = new URLSearchParams(window.location.search);
         const target = params.get('url');
         
-        if (target) {
-            window.location.href = target;
+        if (!target) {
+            document.body.innerHTML = '<h1 style="color:red;">缺少 ?url= 参数</h1><p>正确格式：?url=https://your-link.com</p >';
         } else {
-            document.body.innerHTML = '<h1 style="color:red;">缺少 ?url= 参数</h1><p>正确格式示例：?url=https://www.taobao.com</p >';
+            let seconds = 3;
+            const countdown = setInterval(() => {
+                seconds--;
+                document.getElementById('sec').textContent = seconds;
+                if (seconds <= 0) {
+                    clearInterval(countdown);
+                    window.location.href = target;
+                }
+            }, 1000);
         }
     </script>
 </body>
